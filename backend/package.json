@@ -1,0 +1,32 @@
+{
+  "name": "morning_coffee",
+  "version": "1.0.0",
+  "description": "a personalized productivity app",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=production node index",
+    "dev": "NODE_ENV=development nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnmal-dev/morning_coffee.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnmal-dev/morning_coffee/issues"
+  },
+  "homepage": "https://github.com/johnmal-dev/morning_coffee#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.5.2",
+    "morgan": "^1.10.0"
+  }
+}
