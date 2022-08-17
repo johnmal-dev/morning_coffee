@@ -1,8 +1,14 @@
-import * as React from "react";
-import Button from "@mui/material/Button";
+import React from "react";
+import ClockComponent from "./components/ClockComponent";
+import Greeting from "./components/Greeting";
 
 function App() {
-  return <Button variant="contained">Hello World</Button>;
+  return (
+    <div>
+      <ClockComponent />
+      <Greeting />
+    </div>
+  );
 }
 
 export default App;
