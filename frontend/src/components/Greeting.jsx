@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const timeOfDay = () => {
   const hours = new Date().getHours();
@@ -13,7 +13,47 @@ const timeOfDay = () => {
 };
 
 const Greeting = () => {
-  return <div>{`Good ${timeOfDay()}, John.`}</div>;
+  const [formName, setFormName] = useState(null);
+  const [name, setName] = useState(null);
+  const localName = localStorage.getItem("name");
+
+  useEffect(() => {
+    if (localName) {
+      setName(localName);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("submit");
+    localStorage.setItem("name", formName);
+    setName(formName);
+  };
+
+  if (!localName) {
+    return (
+      <div>
+        <h1>Hello, what's your name?</h1>
+        <form action="#" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="name-input"
+            id="name-input"
+            value={formName}
+            onChange={(e) => setFormName(e.target.value)}
+          />
+          <input type="submit" value="set name" />
+        </form>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <h1>{`Good ${timeOfDay()}, ${name}.`}</h1>
+    </div>
+  );
 };
 
 export default Greeting;
