@@ -7,6 +7,8 @@ const mongoose = require("mongoose");
 const middleware = require("./utils/middleware");
 const morgan = require("morgan");
 
+const wallpapersRouter = require("./controllers/wallpapers");
+
 logger.info("connecting to", config.MONGODB_URI);
 
 mongoose
@@ -23,5 +25,7 @@ app.use(cors());
 app.use(express.static("build"));
 app.use(express.json());
 app.use(middleware.userExtractor);
+
+app.use("/api/wallpapers", wallpapersRouter);
 
 module.exports = app;
