@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./GreetingComponent.css";
 
 const timeOfDay = () => {
   const hours = new Date().getHours();
@@ -21,7 +22,7 @@ const Greeting = () => {
     if (localName) {
       setName(localName);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = (e) => {
@@ -33,7 +34,7 @@ const Greeting = () => {
 
   if (!localName) {
     return (
-      <div>
+      <div className="greeting-component">
         <h1>Hello, what's your name?</h1>
         <form action="#" onSubmit={handleSubmit}>
           <input
@@ -43,14 +44,13 @@ const Greeting = () => {
             value={formName}
             onChange={(e) => setFormName(e.target.value)}
           />
-          <input type="submit" value="set name" />
         </form>
       </div>
     );
   }
 
   return (
-    <div>
+    <div className="greeting-component">
       <h1>{`Good ${timeOfDay()}, ${name}.`}</h1>
     </div>
   );
