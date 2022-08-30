@@ -1,14 +1,13 @@
 import React from "react";
 import ClockComponent from "./components/ClockComponent";
 import Greeting from "./components/Greeting";
-import Wallpaper from './components/Wallpaper';
+import "./App.css";
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <ClockComponent />
       <Greeting />
-      <Wallpaper />
     </div>
   );
 }

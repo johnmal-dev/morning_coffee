@@ -5,9 +5,12 @@ import "./Wallpaper.css";
 const Wallpaper = () => {
   const [wallpaper, setWallpaper] = useState("");
 
+  const styles = {
+    backgroundImage: `url(${wallpaper})`,
+  };
+
   useEffect(() => {
     const localWallpaper = localStorage.getItem("wallpaper");
-    console.log(localWallpaper);
     if (!localWallpaper) {
       wallpapersService
         .getWallpaper()
@@ -24,13 +27,7 @@ const Wallpaper = () => {
     }
   }, []);
 
-  return (
-    <div>
-      <div className="wallpaper-container">
-        <img src={wallpaper} alt="wallpaper" srcSet="" />
-      </div>
-    </div>
-  );
+  return <div style={styles} className="wallpaper-container"></div>;
 };
 
 export default Wallpaper;

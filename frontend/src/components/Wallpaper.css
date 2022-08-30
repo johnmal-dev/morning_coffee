@@ -1,3 +1,8 @@
-.wallpaper-container img {
-  max-width: 100%;
+.wallpaper-container {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
 }
