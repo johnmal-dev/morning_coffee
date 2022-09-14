@@ -3,6 +3,7 @@ import ClockComponent from "./components/ClockComponent";
 import Greeting from "./components/Greeting";
 import "./App.css";
 import FocusComponent from "./components/FocusComponent";
+import TodoComponent from './components/Todos';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <ClockComponent />
       <Greeting />
       <FocusComponent />
+      <TodoComponent />
     </div>
   );
 }
