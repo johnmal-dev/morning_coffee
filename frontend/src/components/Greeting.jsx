@@ -34,9 +34,12 @@ const Greeting = () => {
 
   if (!localName) {
     return (
-      <div className="greeting-component">
+      <div className="greeting-component unselectable">
         <h1>Hello, what's your name?</h1>
-        <form action="#" onSubmit={handleSubmit}>
+        <form
+          action="#"
+          onSubmit={handleSubmit}
+        >
           <input
             type="text"
             name="name-input"
@@ -50,7 +53,7 @@ const Greeting = () => {
   }
 
   return (
-    <div className="greeting-component">
+    <div className="greeting-component unselectable">
       <h1>{`Good ${timeOfDay()}, ${name}.`}</h1>
     </div>
   );
