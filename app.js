@@ -8,6 +8,7 @@ const middleware = require("./utils/middleware");
 const morgan = require("morgan");
 
 const wallpapersRouter = require("./controllers/wallpapers");
+const weatherRouter = require("./controllers/weather");
 
 logger.info("connecting to", config.MONGODB_URI);
 
@@ -27,5 +28,6 @@ app.use(express.json());
 app.use(middleware.userExtractor);
 
 app.use("/api/wallpapers", wallpapersRouter);
+app.use("/api/weather", weatherRouter);
 
 module.exports = app;
