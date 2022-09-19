@@ -1,27 +1,35 @@
-import React, { useState } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import './DraggableTodos.css';
+import React, { useState } from "react";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import "./DraggableTodos.css";
 
 const sampleTodos = [
   {
     id: 1,
-    description: 'grocery run',
+    description: "grocery run",
     isComplete: false,
   },
   {
     id: 2,
-    description: '2k run',
+    description: "2k run",
     isComplete: true,
   },
   {
     id: 3,
-    description: 'banki',
+    description: "banki",
     isComplete: false,
   },
 ];
 
 const TodoComponent = () => {
   const [todos, setTodos] = useState(sampleTodos);
+
+  const handleClick = (index) => (e) => {
+    console.log("index", index);
+    console.log("property name", e.target.innerText);
+    let newArr = [...todos];
+    newArr[index].isComplete = !newArr[index].isComplete;
+    setTodos(newArr);
+  };
 
   const handleDrop = (droppedItem) => {
     // Ignore drop outside droppable container
@@ -36,13 +44,13 @@ const TodoComponent = () => {
   };
 
   return (
-    <div className='DraggableTodos'>
+    <div className="DraggableTodos">
       <h2>Todos</h2>
       <DragDropContext onDragEnd={handleDrop}>
-        <Droppable droppableId='list-container'>
+        <Droppable droppableId="list-container">
           {(provided) => (
             <div
-              className='list-container'
+              className="list-container"
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
@@ -54,10 +62,11 @@ const TodoComponent = () => {
                 >
                   {(provided) => (
                     <div
-                      className='item-container'
+                      className="item-container"
                       ref={provided.innerRef}
                       {...provided.dragHandleProps}
                       {...provided.draggableProps}
+                      onDoubleClick={handleClick(index)}
                     >
                       {item.description}
                     </div>
