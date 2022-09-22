@@ -1,9 +1,10 @@
-import axios from "axios";
-const baseUrl = "/api/wallpapers";
+import axios from 'axios';
+const baseUrl = '/api/wallpapers';
 
 const getWallpaper = async () => {
   const res = await axios.get(baseUrl);
-  return res.data.response;
+  console.log(res);
+  return res.data;
 };
 
 const exportObj = {

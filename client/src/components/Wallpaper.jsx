@@ -1,33 +1,67 @@
-import React, { useEffect, useState } from "react";
-import wallpapersService from "../services/wallpapers";
-import "./Wallpaper.css";
+import React, { useEffect, useState } from 'react';
+import wallpapersService from '../services/wallpapers';
+import './Wallpaper.css';
 
 const Wallpaper = () => {
-  const [wallpaper, setWallpaper] = useState("");
+  const [wallpaperDetails, setWallpaperDetails] = useState([]);
 
   const styles = {
-    backgroundImage: `url(${wallpaper})`,
+    backgroundImage: `url(${wallpaperDetails.imgUrl})`,
   };
 
-  useEffect(() => {
-    const localWallpaper = localStorage.getItem("wallpaper");
-    if (!localWallpaper) {
+  const getWallpaper = () => {
+    const localWallpaperDetails = JSON.parse(
+      localStorage.getItem('wallpaper-details')
+    );
+    if (!localWallpaperDetails) {
       wallpapersService
         .getWallpaper()
         .then((res) => {
-          console.log(res);
-          setWallpaper(res.urls.raw);
-          localStorage.setItem("wallpaper", res.urls.raw);
+          setWallpaperDetails(res);
+          localStorage.setItem('wallpaper-details', JSON.stringify(res));
         })
         .catch((err) => {
           console.error(err);
         });
     } else {
-      setWallpaper(localWallpaper);
+      setWallpaperDetails(
+        JSON.parse(localStorage.getItem('wallpaper-details'))
+      );
     }
+  };
+
+  const handleSkip = () => {
+    localStorage.removeItem('wallpaper-details');
+    getWallpaper();
+  };
+
+  useEffect(() => {
+    getWallpaper();
   }, []);
 
-  return <div style={styles} className="wallpaper-container"></div>;
+  return (
+    <>
+      <div
+        style={styles}
+        className='wallpaper-container'
+      ></div>
+      <div className='wallpaper-info'>
+        <div className='wallpaper-info__card'>
+          <p>{wallpaperDetails.location}</p>
+          <a
+            href={wallpaperDetails.sourceUrl}
+            target='_blank'
+            rel='noreferrer'
+          >
+            <p>{wallpaperDetails.artist}</p>
+          </a>
+          <a href='/'>
+            <button onClick={handleSkip}>skip wallpaper</button>
+          </a>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Wallpaper;

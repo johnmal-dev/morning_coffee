@@ -6,3 +6,13 @@
   background-size: cover;
   z-index: -1;
 }
+
+.wallpaper-info {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.wallpaper-info__card {
+  margin: 5px;
+}
