@@ -7,8 +7,9 @@ const mongoose = require("mongoose");
 const middleware = require("./utils/middleware");
 const morgan = require("morgan");
 
+const usersRouter = require("./controllers/users");
 const wallpapersRouter = require("./controllers/wallpapers");
-const weatherRouter = require("./controllers/weather");
+// const weatherRouter = require("./controllers/weather");
 
 logger.info("connecting to", config.MONGODB_URI);
 
@@ -27,7 +28,8 @@ app.use(express.static("build"));
 app.use(express.json());
 app.use(middleware.userExtractor);
 
+app.use("/api/users", usersRouter);
 app.use("/api/wallpapers", wallpapersRouter);
-app.use("/api/weather", weatherRouter);
+// app.use("/api/weather", weatherRouter);
 
 module.exports = app;
