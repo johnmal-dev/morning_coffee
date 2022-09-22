@@ -10,14 +10,21 @@ const unsplash = createApi({
 
 const collections = ['-fFWu0hoyCw'];
 
+const capitalizeWords = (str) => {
+  return str.replace(/(?:^|\s)\S/g, function (a) {
+    return a.toUpperCase();
+  });
+};
+
 wallpapersRouter.get('/', async (req, res) => {
   const data = await unsplash.photos.getRandom({
     collectionIds: collections,
   });
   const photo = data.response;
+  console.log('photo', photo);
   const returnObj = {
-    artist: photo.user.name,
-    location: photo.location.title,
+    artist: capitalizeWords(photo.user.name),
+    location: photo.location.title || photo.location.name,
     imgUrl: photo.urls.full,
     sourceUrl: photo.links.html,
   };
