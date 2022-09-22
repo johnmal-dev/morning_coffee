@@ -1,9 +1,5 @@
 .weather-component {
   position: absolute;
-  right: 10px;
-  top: 10px;
-  background-color: black;
-  opacity: 0.8;
-  padding: 1rem;
-  border-radius: 1rem;
+  right: 0;
+  top: 0;
 }
