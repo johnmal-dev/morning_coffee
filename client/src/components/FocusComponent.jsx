@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./FocusComponent.css";
 
 const FocusComponent = () => {
   const [formFocus, setFormFocus] = useState("");

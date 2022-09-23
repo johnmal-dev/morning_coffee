@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import weatherService from '../services/weather';
-import './WeatherComponent.css';
 
 const WeatherComponent = () => {
   const [coords, setCoords] = useState({ lat: 43.6773978, lon: -79.4816268 });
@@ -32,9 +31,9 @@ const WeatherComponent = () => {
   };
 
   return (
-    <div className='weather-component bg-opacity-50 bg-slate-500 m-1 p-1 rounded cursor-pointer'>
-      <div className='flex gap-1 items-center text-lg'>
-        <i className={`wi wi-owm-${weather.iconId} text-xl`}></i>
+    <div className='absolute right-0 top-0 m-1 p-1 cursor-pointer hover:-translate-y-0.5 transition transform'>
+      <div className='flex gap-1 items-center text-lg drop-shadow-xl'>
+        <i className={`wi wi-owm-${weather.iconId} text-xl drop-shadow-2xl`}></i>
         <span>{weather.temp}&deg;</span>
       </div>
       <div className='text-xs text-right'>

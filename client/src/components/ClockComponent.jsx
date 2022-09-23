@@ -1,11 +1,11 @@
 import React from 'react';
 import Clock from 'react-live-clock';
-import './ClockComponent.css';
 
 function ClockComponent() {
   return (
-    <div className='clockComponent unselectable'>
+    <div className='clockComponent select-none'>
       <Clock
+        className='text-8xl font-bold drop-shadow-2xl'
         format={'h:mm'}
         ticking={true}
       />
