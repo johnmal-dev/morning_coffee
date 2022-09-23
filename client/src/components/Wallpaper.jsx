@@ -78,7 +78,8 @@ const Wallpaper = () => {
             viewBox='0 0 24 24'
             strokeWidth={1.5}
             stroke='currentColor'
-            className='w-4 h-4 cursor-pointer hover:text-gray-400'
+            className='w-4 h-4 cursor-pointer hover:text-gray-400
+            hover:-translate-y-0.5 transform transition'
             onClick={handleSkip}
           >
             <path

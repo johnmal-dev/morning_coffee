@@ -31,17 +31,17 @@ const WeatherComponent = () => {
   };
 
   return (
-    <div className='absolute right-0 top-0 m-1 p-1 cursor-pointer hover:-translate-y-0.5 transition transform'>
-      <div className='flex gap-1 items-center text-lg drop-shadow-xl'>
+    <div className='absolute right-0 top-0 m-1 p-1 cursor-pointer hover:-translate-y-0.5 transition transform drop-shadow-2xl'>
+      <div className='flex gap-1 items-center text-lg'>
         <i
           className={`wi wi-owm-${weather.isDay ? 'day' : 'night'}-${
             weather.iconId
-          } text-xl drop-shadow-2xl`}
+          } text-xl`}
         ></i>
         <span>{weather.temp}&deg;</span>
       </div>
       <div className='text-xs text-right'>
-        <p>{weather.city}</p>
+        <p className='drop-shadow-2xl'>{weather.city}</p>
       </div>
     </div>
   );

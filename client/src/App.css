@@ -3,4 +3,6 @@
 html,
 body {
   font-size: 22px;
+  overflow: hidden;
+  height: 100%;
 }
