@@ -20,11 +20,15 @@ weatherRouter.get('/', async (req, res) => {
     const iconId = weatherData.weather[0].id;
     const temp = Math.round(weatherData.main.temp);
     const city = googleData.plus_code.compound_code.split(',')[0].split(' ')[1];
+    const isDay =
+      weatherData.dt >= weatherData.sys.sunrise &&
+      weatherData.dt <= weatherData.sys.sunset;
 
     const returnObj = {
       iconId: iconId,
       temp: temp,
       city: city,
+      isDay: isDay,
     };
 
     res.send(returnObj);
