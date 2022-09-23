@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const FocusComponent = () => {
+const Focus = () => {
   const [formFocus, setFormFocus] = useState("");
   const [focus, setFocus] = useState(null);
   const localFocus = localStorage.getItem("focus");
@@ -40,4 +40,4 @@ const FocusComponent = () => {
   );
 };
 
-export default FocusComponent;
+export default Focus;

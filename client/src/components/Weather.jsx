@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import weatherService from '../services/weather';
 
-const WeatherComponent = () => {
+const Weather = () => {
   const [coords, setCoords] = useState({ lat: 43.6773978, lon: -79.4816268 });
   const [weather, setWeather] = useState({});
 
@@ -47,4 +47,4 @@ const WeatherComponent = () => {
   );
 };
 
-export default WeatherComponent;
+export default Weather;
