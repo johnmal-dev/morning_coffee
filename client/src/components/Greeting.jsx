@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 
 const timeOfDay = () => {
   const hours = new Date().getHours();
+  console.log(hours);
   switch (true) {
     case hours >= 4 && hours < 12:
       return 'morning';
-    case hours < 18:
+    case hours < 18 && hours >= 12:
       return 'afternoon';
     default:
       return 'evening';
