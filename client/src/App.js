@@ -5,6 +5,7 @@ import Auth from './components/Auth';
 import './App.css';
 import Wallpaper from './components/Wallpaper';
 import Weather from './components/Weather';
+import Todos from "./components/Todos";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Greeting />
       <Weather />
       <Auth />
+      <Todos />
     </div>
   );
 }
