@@ -3,15 +3,7 @@ import { ChevronUpIcon } from '@heroicons/react/20/solid';
 import { useEffect, useState } from 'react';
 import { usePopper } from 'react-popper';
 
-const todoItems = [
-  {
-    description: 'go for a run',
-    isComplete: true,
-  },
-];
-
-export default function Todos() {
-  let [todos, setTodos] = useState([]);
+export default function Todos({todos, setTodos}) {
   let [todoInput, setTodoInput] = useState('');
   let [referenceElement, setReferenceElement] = useState();
   let [popperElement, setPopperElement] = useState();
@@ -20,10 +12,6 @@ export default function Todos() {
     placement: 'top',
   });
 
-  useEffect(() => {
-    setTodos(todoItems);
-  }, []);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setTodos([...todos, { description: todoInput, isComplete: false }]);
@@ -31,22 +19,15 @@ export default function Todos() {
   };
 
   return (
-    <div className='fixed bottom-0 right-0 m-2'>
+    <div className='fixed bottom-0 right-0 my-2 mx-3'>
       <Popover className='relative'>
         {({ open }) => (
           <>
             <Popover.Button
-              className={`
-                ${open ? '' : 'text-opacity-90'}
-                inline-flex border-2 rounded p-2 text-sm cursor-pointer select-none opacity-80 hover:-translate-y-0.5 hover:opacity-100 transform transition active:bg-gray-100`}
+              className='btn'
               ref={setReferenceElement}
             >
               <span>Todo</span>
-              <ChevronUpIcon
-                className={`${open ? '' : 'text-opacity-70'}
-                  ml-2 h-5 w-5 transition duration-150 ease-in-out group-hover:text-opacity-80`}
-                aria-hidden='true'
-              />
             </Popover.Button>
             <Transition
               enter='transition ease-out duration-200'
