@@ -1,18 +1,17 @@
 import { useState } from 'react';
 import AuthModal from './AuthModal';
+import SettingsIcon from './SettingsIcon';
 
 const Auth = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <div className='absolute left-0 top-0 my-2 mx-3'>
-        <button
-          onClick={() => setOpen(true)}
-          className='btn'
-        >
-          Login
-        </button>
-      </div>
+      <button
+        onClick={() => setOpen(true)}
+        className='btn'
+      >
+        <SettingsIcon />
+      </button>
       <AuthModal
         open={open}
         setOpen={setOpen}

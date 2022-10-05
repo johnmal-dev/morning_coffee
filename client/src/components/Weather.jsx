@@ -31,7 +31,7 @@ const Weather = () => {
   };
 
   return (
-    <div className='absolute right-0 top-0 m-1 p-1 cursor-pointer transition transform drop-shadow-2xl'>
+    <div className='cursor-pointer drop-shadow-2xl'>
       <div className='flex gap-1 items-center text-lg'>
         <i
           className={`wi wi-owm-${weather.isDay ? 'day' : 'night'}-${

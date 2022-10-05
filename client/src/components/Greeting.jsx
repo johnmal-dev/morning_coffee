@@ -55,7 +55,7 @@ const Greeting = () => {
   }
 
   return (
-    <div className='text-4xl font-bold drop-shadow-lg select-none'>
+    <div className='text-4xl font-bold drop-shadow-lg'>
       <h1>{`Good ${timeOfDay()}, ${name}.`}</h1>
     </div>
   );

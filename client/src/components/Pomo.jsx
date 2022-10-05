@@ -30,12 +30,6 @@ function Pomo({ todos, setTodos }) {
         </span>
       </div>
       <CountdownTimer targetDate={dateTimeAfterTwentyFiveMinutes} />
-      <div className='text-4xl font-bold drop-shadow-lg select-none text-center'>
-        {todos[0] ? todos[0].description : 'Focus time.'}
-      </div>
-      <div className='border-2 px-5 py-1 rounded-full uppercase text-xs mt-2 w-min bg-gray-900 bg-opacity-40 hover:bg-opacity-30 cursor-pointer transition transform'>
-        Start
-      </div>
     </div>
   );
 }
