@@ -8,24 +8,24 @@ usersRouter.get('/', async (request, response) => {
 });
 
 usersRouter.post('/', async (request, response) => {
-  const { username, name, password } = request.body;
+  const { firstName, lastName, email, password } = request.body;
 
-  if (!username || !password) {
+  if (!firstName || !lastName || !email || !password) {
     return response.status(400).json({
-      error: 'username and/or password required',
+      error: 'missing field',
     });
   }
 
-  const existingUser = await User.findOne({ username });
-  if (existingUser) {
+  const existingEmail = await User.findOne({ email });
+  if (existingEmail) {
     return response.status(400).json({
-      error: 'username must be unique',
+      error: 'email must be unique',
     });
   }
 
-  if (password.length < 3) {
+  if (password.length < 6) {
     return response.status(400).json({
-      error: 'password must be at least 3 characters long',
+      error: 'password must be at least 6 characters long',
     });
   }
 
@@ -33,8 +33,9 @@ usersRouter.post('/', async (request, response) => {
   const passwordHash = await bcrypt.hash(password, saltRounds);
 
   const user = new User({
-    username,
-    name,
+    firstName,
+    lastName,
+    email,
     passwordHash,
   });
 

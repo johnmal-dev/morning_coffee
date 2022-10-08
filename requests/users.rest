@@ -1,0 +1,21 @@
+# register new user
+###
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Malapit",
+  "email": "john@mail.com",
+  "password": "john123"
+}
+
+# log in
+###
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+  "email": "john@mail.com",
+  "password": "john123"
+}
