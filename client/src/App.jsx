@@ -13,6 +13,7 @@ import Greeting from './components/Greeting';
 import Pomo from './components/Pomo';
 import Auth from './components/Auth';
 import Todos from './components/Todos';
+import CurrentFocus from './components/CurrentFocus';
 
 function App() {
   const [wallpaperDetails, setWallpaperDetails] = useState([]);
@@ -20,6 +21,7 @@ function App() {
   const [showClock, setShowClock] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userDetails, setUserDetails] = useState();
+  const [focusMode, setFocusMode] = useState(true);
 
   useEffect(() => {}, []);
 
@@ -51,20 +53,41 @@ function App() {
         setWallpaperDetails={setWallpaperDetails}
         getWallpaper={getWallpaper}
       />
-      <div className='flex flex-row justify-between h-[60px] items-start flex-[0_0_auto] p-2'>
-        <div className='flex flex-row justify-start gap-2'>
+      <div className='upper-row flex flex-row justify-between h-[60px] items-start flex-[0_0_auto] p-2'>
+        <div className='upper-row-left flex flex-row justify-start gap-2'>
           <div className='cursor-pointer'>Links</div>
           <div className='cursor-pointer'>
             <AudioButton />
           </div>
         </div>
-        <div className='flex flex-row-reverse justify-end gap-2'>
+        <div className='upper-row-right flex flex-row-reverse justify-end gap-2'>
           <div className=''>
             <Weather />
           </div>
         </div>
       </div>
-      <div className='center-above flex-[1_1_50%]'></div>
+      <div className='center-above flex-[1_1_50%] flex justify-center items-end'>
+        {!showClock && (
+          <div className='flex justify-center gap-10 border-t-2 pt-1 w-60'>
+            <span
+              className={`${
+                focusMode ? 'opacity-100' : 'opacity-80'
+              } cursor-pointer uppercase hover:opacity-100 transform transition active:opacity-80`}
+              onClick={() => setFocusMode(true)}
+            >
+              Focus
+            </span>
+            <span
+              className={`${
+                !focusMode ? 'opacity-100' : 'opacity-80'
+              } cursor-pointer uppercase hover:opacity-100 transform transition active:opacity-80`}
+              onClick={() => setFocusMode(false)}
+            >
+              Break
+            </span>
+          </div>
+        )}
+      </div>
       <div className='center-container flex-auto select-none'>
         <div className='time-container flex justify-center items-center gap-4 group'>
           <div
@@ -74,9 +97,9 @@ function App() {
             <SwitchButton />
           </div>
           <div className='text-3xl'>
-            {/* <Clock /> */}
-            {showClock && <Clock />}
-            {!showClock && (
+            {showClock ? (
+              <Clock />
+            ) : (
               <Pomo
                 todos={todos}
                 setTodos={setTodos}
@@ -90,48 +113,51 @@ function App() {
         <div className='greeting-container flex flex-row items-center group gap-1'>
           <div className='flex-1'></div>
           <div className='w-min flex justify-center whitespace-nowrap'>
-            {showClock && (
-              <Greeting
-                isLoggedIn={isLoggedIn}
-                loggedInName={userDetails ? userDetails.firstName : ''}
-              />
-            )}
+            <div className='text-center select-none mt-4'>
+              {showClock ? (
+                <Greeting
+                  isLoggedIn={isLoggedIn}
+                  loggedInName={userDetails ? userDetails.firstName : ''}
+                />
+              ) : (
+                <CurrentFocus
+                  focus={todos.length ? todos[0].description : null}
+                />
+              )}
+            </div>
           </div>
-          <div className='flex-1 transform transition opacity-0 group-hover:opacity-80 cursor-pointer'>
-            <EllipsisButton />
-          </div>
+          <div className='flex-1 transform transition opacity-0 group-hover:opacity-80 cursor-pointer'></div>
         </div>
       </div>
-      <div className='flex-[1_1_50%] flex flex-col items-center justify-start select-none'>
+      <div className='flex-[1_1_50%] flex justify-center'>
         {showClock ? (
-          <>
-            <div>TODAY</div>
+          <div className='text-center flex flex-col justify-center'>
             {todos.length > 0 && (
-              <div className='todo-container flex flex-row gap-2 group w-full'>
-                <div
-                  className='flex-1 flex justify-end transform transition opacity-0 group-hover:opacity-80 cursor-pointer'
-                  onClick={() => setTodos(todos.slice(1))}
-                >
-                  <CheckboxButton />
+              <>
+                <div>TODAY</div>
+                <div className='todo-container flex flex-row gap-2 group w-full'>
+                  <div
+                    className='flex-1 flex justify-end transform transition opacity-0 group-hover:opacity-80 cursor-pointer'
+                    onClick={() => setTodos(todos.slice(1))}
+                  >
+                    <CheckboxButton />
+                  </div>
+                  <div className='flex-none'>
+                    {todos.length ? todos[0].description : ''}
+                  </div>
+                  <div className='flex-1 transform transition opacity-0 group-hover:opacity-80 cursor-pointer'>
+                    <EllipsisButton />
+                  </div>
                 </div>
-                <div className='flex-none'>
-                  {todos.length ? todos[0].description : ''}
-                </div>
-                <div className='flex-1 transform transition opacity-0 group-hover:opacity-80 cursor-pointer'>
-                  <EllipsisButton />
-                </div>
-              </div>
+              </>
             )}
-          </>
+          </div>
         ) : (
-          <>
-            <div className='text-4xl font-bold drop-shadow-lg select-none text-center'>
-              {todos[0] ? todos[0].description : 'Focus time.'}
-            </div>
+          <div>
             <div className='border-2 px-5 py-1 rounded-full uppercase text-xs mt-2 w-min bg-gray-900 bg-opacity-40 hover:bg-opacity-30 cursor-pointer transition transform'>
               Start
             </div>
-          </>
+          </div>
         )}
       </div>
       <div className='flex flex-row justify-between items-center h-[60px] p-2'>

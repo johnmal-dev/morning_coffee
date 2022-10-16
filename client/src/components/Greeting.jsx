@@ -34,7 +34,7 @@ const Greeting = ({ isLoggedIn, loggedInName }) => {
 
   if (!localName) {
     return (
-      <div className="text-center select-none mt-4">
+      <>
         <h1 className="text-4xl font-bold drop-shadow-lg">
           Hello, what's your name?
         </h1>
@@ -47,7 +47,7 @@ const Greeting = ({ isLoggedIn, loggedInName }) => {
             onChange={(e) => setFormName(e.target.value)}
           />
         </form>
-      </div>
+      </>
     );
   }
 
