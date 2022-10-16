@@ -3,7 +3,7 @@ import weatherService from '../services/weather';
 
 const Weather = () => {
   const [coords, setCoords] = useState({ lat: 43.6773978, lon: -79.4816268 });
-  const [weather, setWeather] = useState({});
+  const [weather, setWeather] = useState(null);
 
   const getLocation = () => {
     console.log('getLocation');
@@ -31,19 +31,21 @@ const Weather = () => {
   };
 
   return (
-    <div className='cursor-pointer drop-shadow-2xl'>
-      <div className='flex gap-1 items-center text-lg'>
-        <i
-          className={`wi wi-owm-${weather.isDay ? 'day' : 'night'}-${
-            weather.iconId
-          } text-xl`}
-        ></i>
-        <span>{weather.temp}&deg;</span>
+    weather && (
+      <div className='cursor-pointer drop-shadow-2xl'>
+        <div className='flex gap-1 items-center text-lg'>
+          <i
+            className={`wi wi-owm-${weather.isDay ? 'day' : 'night'}-${
+              weather.iconId
+            } text-xl`}
+          ></i>
+          <span>{weather.temp}&deg;</span>
+        </div>
+        <div className='text-xs text-right'>
+          <p className='drop-shadow-2xl'>{weather.city}</p>
+        </div>
       </div>
-      <div className='text-xs text-right'>
-        <p className='drop-shadow-2xl'>{weather.city}</p>
-      </div>
-    </div>
+    )
   );
 };
 
