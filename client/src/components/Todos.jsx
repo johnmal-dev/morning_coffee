@@ -14,8 +14,14 @@ export default function Todos({ todos, setTodos }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTodos([...todos, { description: todoInput, isComplete: false }]);
-    setTodoInput('');
+    if (todoInput.trim()) {
+      setTodos([...todos, { description: todoInput, isComplete: false }]);
+      setTodoInput('');
+    }
+  };
+
+  const deleteTodo = (index) => {
+    setTodos([...todos].filter((_todo, i) => i !== index));
   };
 
   return (
@@ -48,6 +54,7 @@ export default function Todos({ todos, setTodos }) {
                     <div
                       key={index}
                       className='items-center p-2 text-sm font-medium cursor-pointer'
+                      onClick={() => deleteTodo(index)}
                     >
                       {item.description}
                     </div>

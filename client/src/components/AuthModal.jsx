@@ -1,6 +1,7 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useContext } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { SunIcon } from "@heroicons/react/24/outline";
+import { AuthContext } from "../store/AuthContext";
 import axios from "axios";
 
 const AuthModal = ({ open, setOpen, setIsLoggedIn, setUserDetails }) => {
@@ -8,6 +9,8 @@ const AuthModal = ({ open, setOpen, setIsLoggedIn, setUserDetails }) => {
   const [passwordInput, setPasswordInput] = useState("");
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const data = useContext(AuthContext);
+  console.log(data);
 
   const loginHandler = async (e) => {
     e.preventDefault();
