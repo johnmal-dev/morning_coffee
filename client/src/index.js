@@ -3,13 +3,13 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 import "./weather-icons/css/weather-icons.css";
-import { AuthContext, data } from "./store/AuthContext";
+import ContextPomo from "./components/context/PomoContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <div>
-    <AuthContext.Provider value={data}>
+    <ContextPomo>
       <App />
-    </AuthContext.Provider>
+    </ContextPomo>
   </div>
 );

@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
-import CountdownTimer from './CountdownTimer';
+import { useContext } from 'react';
+import { PomoContext } from './context/PomoContext';
 
-function Pomo({ todos, setTodos }) {
-  const [isPaused, setIsPaused] = useState(true);
-  const TWENTY_FIVE_MINUTES_IN_MS = 25 * 60 * 1000;
-  const NOW_IN_MS = new Date().getTime();
-
-  const dateTimeAfterTwentyFiveMinutes = NOW_IN_MS + TWENTY_FIVE_MINUTES_IN_MS;
+const Pomo = () => {
+  const { time } = useContext(PomoContext);
 
   return (
-    <>
-      <CountdownTimer targetDate={dateTimeAfterTwentyFiveMinutes} />
-    </>
+    <div className='text-8xl font-bold drop-shadow-2xl'>
+      <div>
+        <span>{`${Math.floor((time / 60000) % 60)}`}:</span>
+        <span>{`${Math.floor((time / 1000) % 60)}`.padStart(2, '0')}</span>
+      </div>
+    </div>
   );
-}
+};
 
 export default Pomo;

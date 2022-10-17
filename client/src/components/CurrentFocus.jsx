@@ -1,10 +1,14 @@
 import React from 'react';
 
-const CurrentFocus = ({ focus }) => {
+const CurrentFocus = ({ focus, focusMode }) => {
   return (
-    <>
-      {focus && <h1 className='text-4xl font-bold drop-shadow-lg'>{focus}</h1>}
-    </>
+    <h1 className='text-4xl drop-shadow-lg'>
+      {focus ? (
+        <span>{focus}</span>
+      ) : (
+        <span>{focusMode ? 'Focus Time.' : 'Break Time.'}</span>
+      )}
+    </h1>
   );
 };
 

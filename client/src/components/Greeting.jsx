@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 const timeOfDay = () => {
   const hours = new Date().getHours();
-  console.log(hours);
   switch (true) {
     case hours >= 4 && hours < 12:
       return "morning";
@@ -27,7 +26,6 @@ const Greeting = ({ isLoggedIn, loggedInName }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submit");
     localStorage.setItem("name", formName);
     setName(formName);
   };
@@ -35,7 +33,7 @@ const Greeting = ({ isLoggedIn, loggedInName }) => {
   if (!localName) {
     return (
       <>
-        <h1 className="text-4xl font-bold drop-shadow-lg">
+        <h1 className="text-4xl drop-shadow-lg">
           Hello, what's your name?
         </h1>
         <form action="#" onSubmit={handleSubmit}>
@@ -52,7 +50,7 @@ const Greeting = ({ isLoggedIn, loggedInName }) => {
   }
 
   return (
-    <div className="text-4xl font-bold drop-shadow-lg">
+    <div className="text-4xl drop-shadow-lg">
       <h1>{`Good ${timeOfDay()}, ${loggedInName || name}.`}</h1>
     </div>
   );

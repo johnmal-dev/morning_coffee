@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './App.css';
 import Wallpaper from './components/Wallpaper';
 import EllipsisButton from './components/EllipsisButton';
@@ -14,6 +14,8 @@ import Pomo from './components/Pomo';
 import Auth from './components/Auth';
 import Todos from './components/Todos';
 import CurrentFocus from './components/CurrentFocus';
+import CounterWidget from './components/CounterWidget';
+import { PomoContext } from './components/context/PomoContext'
 
 function App() {
   const [wallpaperDetails, setWallpaperDetails] = useState([]);
@@ -21,7 +23,14 @@ function App() {
   const [showClock, setShowClock] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userDetails, setUserDetails] = useState();
-  const [focusMode, setFocusMode] = useState(true);
+  const {
+    running,
+    setRunning,
+    pomoCount,
+    setPomoCount,
+    focusMode,
+    setFocusMode,
+  } = useContext(PomoContext);
 
   useEffect(() => {}, []);
 
@@ -64,6 +73,12 @@ function App() {
           <div className=''>
             <Weather />
           </div>
+          <div className=''>
+            <CounterWidget
+              title='Pomos'
+              count={pomoCount}
+            />
+          </div>
         </div>
       </div>
       <div className='center-above flex-[1_1_50%] flex justify-center items-end'>
@@ -71,7 +86,7 @@ function App() {
           <div className='flex justify-center gap-10 border-t-2 pt-1 w-60'>
             <span
               className={`${
-                focusMode ? 'opacity-100' : 'opacity-80'
+                focusMode ? 'opacity-100 font-semibold' : 'opacity-80'
               } cursor-pointer uppercase hover:opacity-100 transform transition active:opacity-80`}
               onClick={() => setFocusMode(true)}
             >
@@ -79,7 +94,7 @@ function App() {
             </span>
             <span
               className={`${
-                !focusMode ? 'opacity-100' : 'opacity-80'
+                !focusMode ? 'opacity-100 font-semibold' : 'opacity-80'
               } cursor-pointer uppercase hover:opacity-100 transform transition active:opacity-80`}
               onClick={() => setFocusMode(false)}
             >
@@ -101,8 +116,12 @@ function App() {
               <Clock />
             ) : (
               <Pomo
-                todos={todos}
-                setTodos={setTodos}
+                running={running}
+                setRunning={setRunning}
+                pomoCount={pomoCount}
+                setPomoCount={setPomoCount}
+                focusMode={focusMode}
+                setFocusMode={setFocusMode}
               />
             )}
           </div>
@@ -121,7 +140,7 @@ function App() {
                 />
               ) : (
                 <CurrentFocus
-                  focus={todos.length ? todos[0].description : null}
+                  focusMode={focusMode} focus={todos.length ? todos[0].description : null}
                 />
               )}
             </div>
@@ -154,8 +173,11 @@ function App() {
           </div>
         ) : (
           <div>
-            <div className='border-2 px-5 py-1 rounded-full uppercase text-xs mt-2 w-min bg-gray-900 bg-opacity-40 hover:bg-opacity-30 cursor-pointer transition transform'>
-              Start
+            <div
+              className='border-2 px-5 py-1 rounded-full uppercase text-xs mt-4 w-20 text-center bg-gray-900 bg-opacity-40 hover:bg-opacity-30 cursor-pointer transition transform'
+              onClick={() => setRunning(!running)}
+            >
+              {running ? 'PAUSE' : 'START'}
             </div>
           </div>
         )}
