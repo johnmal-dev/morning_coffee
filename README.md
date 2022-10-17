@@ -3,23 +3,24 @@ I am a big huge of the [Momentum App](https://momentumdash.com/). Unfortunately,
 
 ![Demo of App](./media/demo.gif)
 
-### How Its Made
+## How Its Made
 Tech used: React, Express, MongoDB, Tailwind CSS, Unsplash API, Google's Geolocation API, and OpenWeather API
 
-### Packages/Dependencies Used
+## Packages/Dependencies Used
 **frontend**: @emotion, @headlessui, @heroicons, @mui, @popperjs, axios, react, react-live-clock, react-popper, react-live-clock
+
 **backend**: axios, bcrypt, concurrently, cors, dotenv, express, jsonwebtoken, mongoose, morgan, nodemon, unsplash-js
 
-### Screenshots
+## Screenshots
 <img src='./media/1.png' alt='image of clock face' width='400'>
 <img src='./media/2.png' alt='image of timer face' width='400'>
 
-### Links
+## Links
 
 - GitHub: [github.com/johnmal-dev/morning_coffee](https://github.com/johnmal-dev/morning_coffee)
 - Live Site: coming soon!
 
-### Features Implemented
+## Features Implemented
 - [x] live clock
 - [x] get weather data from API
 - [x] users can change background image (randomly)
@@ -27,7 +28,7 @@ Tech used: React, Express, MongoDB, Tailwind CSS, Unsplash API, Google's Geoloca
 - [x] login functionality
 - [x] pomodoro timer
 
-### Next Steps
+## Next Steps
 - [ ] revise authentication method
 - [ ] save favourites, changes to DB
 - [ ] manually change location for weather API
