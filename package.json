@@ -4,8 +4,9 @@
   "description": "a personalized productivity app",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production node index",
-    "dev": "NODE_ENV=development nodemon index"
+    "server": "node index",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/johnmal-dev/morning_coffee#readme",
   "devDependencies": {
+    "concurrently": "^7.4.0",
     "nodemon": "^2.0.19"
   },
   "dependencies": {
