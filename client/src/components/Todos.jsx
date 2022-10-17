@@ -69,8 +69,9 @@ export default function Todos({ todos, setTodos }) {
                       type='text'
                       name='name'
                       id='name'
-                      className='block w-full bg-gray-900 bg-opacity-80 sm:text-sm text-white active:ring-0 p-2 rounded'
+                      className='block w-full bg-gray-900 bg-opacity-80 sm:text-sm text-white p-2 rounded'
                       placeholder='New Todo'
+                      autoComplete='off'
                       value={todoInput}
                       onChange={({ target }) => {
                         setTodoInput(target.value);
