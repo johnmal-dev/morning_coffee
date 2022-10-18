@@ -15,7 +15,7 @@ import Auth from './components/Auth';
 import Todos from './components/Todos';
 import CurrentFocus from './components/CurrentFocus';
 import CounterWidget from './components/CounterWidget';
-import { PomoContext } from './components/context/PomoContext'
+import { PomoContext } from './components/context/PomoContext';
 
 function App() {
   const [wallpaperDetails, setWallpaperDetails] = useState([]);
@@ -140,7 +140,8 @@ function App() {
                 />
               ) : (
                 <CurrentFocus
-                  focusMode={focusMode} focus={todos.length ? todos[0].description : null}
+                  focusMode={focusMode}
+                  focus={todos.length ? todos[0].description : null}
                 />
               )}
             </div>

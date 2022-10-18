@@ -1,20 +1,19 @@
-import { useState } from "react";
-import AuthModal from "./AuthModal";
-import SettingsIcon from "./SettingsIcon";
+import { useContext } from 'react';
+import AuthModal from './AuthModal';
+import SettingsIcon from './SettingsIcon';
+import { UIContext } from './context/UIContext';
 
-const Auth = ({ setIsLoggedIn, setUserDetails}) => {
-  const [open, setOpen] = useState(false);
+const Auth = () => {
+  const { setShowAuthModal } = useContext(UIContext);
   return (
     <>
-      <button onClick={() => setOpen(true)} className="btn">
+      <button
+        onClick={() => setShowAuthModal(true)}
+        className='btn'
+      >
         <SettingsIcon />
       </button>
-      <AuthModal
-        open={open}
-        setOpen={setOpen}
-        setIsLoggedIn={setIsLoggedIn}
-        setUserDetails={setUserDetails}
-      />
+      <AuthModal />
     </>
   );
 };
