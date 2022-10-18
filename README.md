@@ -29,6 +29,7 @@ Tech used: React, Express, MongoDB, Tailwind CSS, Unsplash API, Google's Geoloca
 - [x] pomodoro timer
 
 ## Next Steps
+- [ ] add register option
 - [ ] revise authentication method
 - [ ] save favourites, changes to DB
 - [ ] manually change location for weather API
