@@ -4,7 +4,7 @@
   "description": "a personalized productivity app",
   "main": "index.js",
   "scripts": {
-    "start":"node index",
+    "start":"node index.js",
     "server": "node index",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\" "
