@@ -6,6 +6,7 @@ const logger = require('./utils/logger');
 const mongoose = require('mongoose');
 const middleware = require('./utils/middleware');
 const morgan = require('morgan');
+const path = require('path');
 
 const usersRouter = require('./controllers/users');
 const wallpapersRouter = require('./controllers/wallpapers');
