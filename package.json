@@ -4,10 +4,11 @@
   "description": "a personalized productivity app",
   "main": "index.js",
   "scripts": {
-    "start":"node index.js",
+    "start": "node index.js",
     "server": "node index",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\" "
+    "dev": "concurrently \"npm run server\" \"npm run client\" ",
+    "build": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
