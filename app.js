@@ -6,7 +6,6 @@ const logger = require('./utils/logger');
 const mongoose = require('mongoose');
 const middleware = require('./utils/middleware');
 const morgan = require('morgan');
-const path = require('path');
 
 const usersRouter = require('./controllers/users');
 const wallpapersRouter = require('./controllers/wallpapers');
@@ -34,9 +33,5 @@ app.use('/api/users', usersRouter);
 app.use('/api/wallpapers', wallpapersRouter);
 app.use('/api/weather', weatherRouter);
 app.use('/api/login', loginRouter);
-
-app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-});
 
 module.exports = app;
