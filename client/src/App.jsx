@@ -57,11 +57,11 @@ function App() {
 
   return (
     <div className='App h-screen w-screen overflow-y-hidden text-white flex flex-col justify-between items-stretch select-none'>
-      <Wallpaper
+      {/* <Wallpaper
         wallpaperDetails={wallpaperDetails}
         setWallpaperDetails={setWallpaperDetails}
         getWallpaper={getWallpaper}
-      />
+      /> */}
       <div className='upper-row flex flex-row justify-between h-[60px] items-start flex-[0_0_auto] p-2'>
         <div className='upper-row-left flex flex-row justify-start gap-2'>
           <div className='cursor-pointer'>Links</div>
@@ -189,10 +189,10 @@ function App() {
             setIsLoggedIn={setIsLoggedIn}
             setUserDetails={setUserDetails}
           />
-          <WallpaperDetails
+          {/* <WallpaperDetails
             wallpaperDetails={wallpaperDetails}
             getWallpaper={getWallpaper}
-          />
+          /> */}
         </div>
         <div className='bottom-[60px] absolute left-2/4 -translate-x-2/4 md:left-0 md:-translate-x-0 md:relative md:bottom-0 w-full md:w-auto text-center'>
           <div className='app-container group'>
