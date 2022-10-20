@@ -37,7 +37,7 @@ app.use('/api/login', loginRouter);
 
 // UNHANDLED
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 module.exports = app;
