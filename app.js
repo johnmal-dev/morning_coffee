@@ -36,8 +36,16 @@ app.use('/api/weather', weatherRouter);
 app.use('/api/login', loginRouter);
 
 // UNHANDLED
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-});
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/client/build')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.send('Api Running ');
+  });
+}
 
 module.exports = app;
